@@ -1,0 +1,37 @@
+Command Line Chat Protocol
+
+v1.0
+
+# PURPOSE
+
+This protocol is for simple text-based chat between a number of clients using a single server
+
+# CLIENT
+
+Client MUST ask user for their name.
+
+Client MUST connect to a server via TCP on port 8096.
+
+Client MUST ask user for messages and send them to the server immediately.
+
+Client MUST send UTF-8 encoded plain-text messages in the format:
+
+```
+name: message
+```
+
+where `name` is the user's preferred name and `message` is the message the user just typed.
+
+Client MUST receive messages and display them, unmodified, immediately upon receiving them
+
+# SERVER
+
+Server MUST accept client connections over TCP on port 8096.
+
+Server MUST support multiple clients connected simultaneously.
+
+Server SHOULD handle clients disconnecting during chat.
+
+Server MUST receive client messages and forward them, unmodified, to all other connected clients.
+
+Server MAY send a message back to the client that sent it.
